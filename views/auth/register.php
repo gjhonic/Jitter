@@ -13,24 +13,28 @@ use yii\widgets\ActiveForm;
 
             <div class="col-md-6">
                 <div class="form-group">
-                    <?= $form->field($model, 'name')->textInput(['placeholder' => 'Введите имя'])->label('Введите имя') ?>
-                    <div class="help-block with-errors"></div>
+                    <?= $form->field($model, 'username', ['errorOptions' => ['class' => 'text-danger']])->textInput(['placeholder' => 'Введите имя'])->label('Введите имя') ?>
                 </div>
             </div>
             <br>
 
             <div class="col-md-6">
                 <div class="form-group">
-                    <?= $form->field($model, 'email')->textInput(['placeholder' => 'Введите эл.почту'])->label('Введите эл.почту') ?>
-                    <div class="help-block with-errors"></div>
+                    <?= $form->field($model, 'email', ['errorOptions' => ['class' => 'text-danger']])->textInput(['placeholder' => 'Введите эл.почту'])->label('Введите эл.почту') ?>
                 </div>
             </div>
             <br>
 
             <div class="col-md-6">
                 <div class="form-group">
-                    <?= $form->field($model, 'password')->textInput(['placeholder' => 'Введите пароль'])->label('Введите пароль') ?>
-                    <div class="help-block with-errors"></div>
+                    <?= $form->field($model, 'password', ['errorOptions' => ['class' => 'text-danger']])->textInput(['placeholder' => 'Введите пароль'])->label('Введите пароль') ?>
+                </div>
+            </div>
+            <br>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <?= $form->field($model, 'password_confirm', ['errorOptions' => ['class' => 'text-danger']])->textInput(['placeholder' => 'Повторите пароль'])->label('Повторите пароль') ?>
                 </div>
             </div>
             <br>

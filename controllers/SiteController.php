@@ -9,6 +9,7 @@ use yii\web\Controller;
 
 class SiteController extends Controller
 {
+    public $layout = 'main';
 //    public function behaviors(): array
 //    {
 //        return [
@@ -56,7 +57,6 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        echo "<h1> Hello </h1>";
-        die;
+       return $this->render('index');
     }
 }

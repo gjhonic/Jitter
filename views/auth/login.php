@@ -13,15 +13,15 @@ use yii\widgets\ActiveForm;
 
             <div class="col-md-6">
                 <div class="form-group">
-                    <?= $form->field($model, 'email')->textInput(['placeholder' => 'Введите эл.почту'])->label('Введите эл.почту') ?>
-                    <div class="help-block with-errors"></div>
+                    <?= $form->field($model, 'email', ['errorOptions' => ['class' => 'text-danger']])->textInput(['placeholder' => 'Введите эл.почту'])->label('Введите эл.почту') ?>
+                    <div class="help-block with-errors color-warning"></div>
                 </div>
             </div>
             <br>
 
             <div class="col-md-6">
                 <div class="form-group">
-                    <?= $form->field($model, 'password')->textInput(['placeholder' => 'Введите пароль'])->label('Введите пароль') ?>
+                    <?= $form->field($model, 'password', ['errorOptions' => ['class' => 'text-danger']])->textInput(['placeholder' => 'Введите пароль'])->label('Введите пароль') ?>
                     <div class="help-block with-errors"></div>
                 </div>
             </div>
@@ -32,3 +32,4 @@ use yii\widgets\ActiveForm;
         <?php $form = ActiveForm::end(); ?>
     </form>
 </div>
+
