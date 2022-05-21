@@ -26,8 +26,8 @@ class SiteController extends Controller
                 'rules' => [
                     [
                         'allow' => true,
-                        'actions' => ['index'],
-                        'roles' => ['?'],
+                        'actions' => ['index', 'about'],
+                        'roles' => ['?', '@'],
                     ],
                 ],
             ],
@@ -50,13 +50,23 @@ class SiteController extends Controller
         ];
     }
 
+    public $layout = 'frontend';
+
     /**
      * Render homepage
      * @return string
      */
     public function actionIndex()
     {
-        echo "<h1> Hello </h1>";
-        die;
+       return $this->render('index');
+    }
+
+    /**
+     * Render about
+     * @return string
+     */
+    public function actionAbout()
+    {
+        return $this->render('about');
     }
 }

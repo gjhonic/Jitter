@@ -25,7 +25,7 @@ $config = [
             'class' => 'yii\caching\FileCache',
         ],
         'user' => [
-            'identityClass' => 'app\models\UserIdentity',
+            'identityClass' => 'app\models\User',
             'enableAutoLogin' => true,
         ],
         'errorHandler' => [
@@ -65,6 +65,16 @@ $config = [
         ],
         'i18n' => [
             'translations' => [
+                'app*' => [
+                    'class' => 'yii\i18n\PhpMessageSource',
+                    'basePath' => '@app/messages',
+                    'sourceLanguage' => 'en-US',
+                    'fileMap' => [
+                        'app'        => 'app.php',
+                        'app/note'   => 'note.php',
+                        'app/error'  => 'error.php',
+                    ],
+                ],
             ],
         ],
     ],
