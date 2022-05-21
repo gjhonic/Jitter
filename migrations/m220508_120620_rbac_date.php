@@ -26,6 +26,18 @@ class m220508_120620_rbac_date extends Migration
         $auth->add($roleAdmin);
         $auth->addChild($roleAdmin, $roleUser);
 
+
+        //Добавляем дефолтных пользователей
+        $user = new User();
+        $user->username = "test";
+        $user->email = "test@mail.ru";
+        $user->password = Yii::$app->getSecurity()->generatePasswordHash('12345678');
+        $user->role = User::ROLE_USER;
+        $user->status_id = User::STATUS_ACTIVE_ID;
+        $user->save();
+
+        $auth->assign($roleUser, $user->id);
+
         $admin = new User();
         $admin->username = "admin";
         $admin->email = "admin@mail.ru";
@@ -35,7 +47,6 @@ class m220508_120620_rbac_date extends Migration
         $admin->save();
 
         $auth->assign($roleAdmin, $admin->id);
-
     }
 
     /**
@@ -47,19 +58,4 @@ class m220508_120620_rbac_date extends Migration
 
         return false;
     }
-
-    /*
-    // Use up()/down() to run migration code without a transaction.
-    public function up()
-    {
-
-    }
-
-    public function down()
-    {
-        echo "m220508_120620_rbac_date cannot be reverted.\n";
-
-        return false;
-    }
-    */
 }

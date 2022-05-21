@@ -11,23 +11,23 @@ class LoginForm extends Model
     public $password;
 
     /**
-     * {@inheritdoc}
+     * @return array
      */
-    public function rules()
+    public function rules(): array
     {
         return [
-            [['email', 'password'], 'required', 'message' => 'Заполните поле'],
+            [['email', 'password'], 'required', 'message' => Yii::t('app/note', 'Fill in the field')],
         ];
     }
 
     /**
-     * {@inheritdoc}
+     * @return array
      */
-    public function attributeLabels()
+    public function attributeLabels(): array
     {
         return [
-            'email' => 'Email',
-            'password' => 'Password',
+            'email' => Yii::t('app', 'Email'),
+            'password' => Yii::t('app', 'Password'),
         ];
     }
 }

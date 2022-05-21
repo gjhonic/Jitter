@@ -15,7 +15,7 @@ class m220508_115847_create_users_table extends Migration
         $this->createTable('{{%users}}', [
             'id' => $this->primaryKey(),
             'username' => $this->string(255)->unique()->notNull(),
-            'email' => $this->string()->unique(),
+            'email' => $this->string(100)->unique()->notNull(),
             'password' => $this->string(255)->notNull(),
             'role' => $this->string(15)->notNull(),
             'status_id' => $this->integer()->notNull(),
@@ -24,6 +24,8 @@ class m220508_115847_create_users_table extends Migration
             'created_at' => $this->integer(),
             'updated_at' => $this->integer(),
         ]);
+
+        $this->createIndex( 'idx-users-id', '{{%users}}', 'id' );
     }
 
     /**
@@ -31,6 +33,7 @@ class m220508_115847_create_users_table extends Migration
      */
     public function safeDown()
     {
+        $this->dropIndex( 'idx-users-id', '{{%users}}');
         $this->dropTable('{{%users}}');
     }
 }

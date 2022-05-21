@@ -22,6 +22,9 @@ use yii\web\IdentityInterface;
  */
 class User extends \yii\db\ActiveRecord implements IdentityInterface
 {
+    const ROLE_GUEST = "?";
+    const ROLE_AUTHORIZED = "@";
+
     const ROLE_ADMIN = 'admin';
     const ROLE_USER = 'user';
 
@@ -36,23 +39,24 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
     const STATUS_BAN_ID = 3;
 
     /**
-     * {@inheritdoc}
+     * @return string
      */
     public static function tableName()
     {
-        return 'users';
+        return '{{%users}}';
     }
 
     /**
-     * {@inheritdoc}
+     * @return array
      */
-    public function rules()
+    public function rules(): array
     {
         return [
             [['username', 'email', 'password', 'role', 'status_id'], 'required'],
-            [['status_id', 'created_at', 'updated_at'], 'integer'],
+            [['status_id'], 'integer'],
             [['username', 'password'], 'string', 'max' => 255],
             [['role'], 'string', 'max' => 15],
+            [['created_at', 'updated_at'], 'safe'],
             [['auth_key', 'access_token'], 'string', 'max' => 32],
             [['email'], 'unique'],
         ];
@@ -69,21 +73,21 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
     }
 
     /**
-     * {@inheritdoc}
+     * @return array
      */
-    public function attributeLabels()
+    public function attributeLabels(): array
     {
         return [
-            'id' => 'ID',
-            'username' => 'Username',
-            'password' => 'Password',
-            'email' => 'Email',
-            'role' => 'Role',
-            'status_id' => 'Status ID',
+            'id' => Yii::t('app', 'Id'),
+            'username' => Yii::t('app', 'Username'),
+            'password' => Yii::t('app', 'Password'),
+            'email' => Yii::t('app', 'Email'),
+            'role' => Yii::t('app', 'Role'),
+            'status_id' => Yii::t('app', 'Status'),
             'auth_key' => 'Auth Key',
             'access_token' => 'Access Token',
-            'created_at' => 'Created At',
-            'updated_at' => 'Updated At',
+            'created_at' => Yii::t('app', 'Created at'),
+            'updated_at' =>  Yii::t('app', 'Updated at'),
         ];
     }
 
@@ -110,7 +114,7 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
     }
 
     /**
-     * @return int|string current user ID
+     * @return int current user ID
      */
     public function getId()
     {
