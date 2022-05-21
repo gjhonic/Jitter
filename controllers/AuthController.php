@@ -12,8 +12,6 @@ use yii\helpers\Url;
 
 class AuthController extends \yii\web\Controller
 {
-    public $layout = 'frontend';
-
     public function behaviors(): array
     {
         return [
@@ -59,6 +57,8 @@ class AuthController extends \yii\web\Controller
             ],
         ];
     }
+
+    public $layout = 'frontend';
 
     public function actionSignin()
     {

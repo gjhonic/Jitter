@@ -9,8 +9,6 @@ use yii\web\Controller;
 
 class SiteController extends Controller
 {
-    public $layout = 'frontend';
-
     public function behaviors(): array
     {
         return [
@@ -28,8 +26,8 @@ class SiteController extends Controller
                 'rules' => [
                     [
                         'allow' => true,
-                        'actions' => ['index'],
-                        'roles' => ['?'],
+                        'actions' => ['index', 'about'],
+                        'roles' => ['?', '@'],
                     ],
                 ],
             ],
@@ -52,6 +50,8 @@ class SiteController extends Controller
         ];
     }
 
+    public $layout = 'frontend';
+
     /**
      * Render homepage
      * @return string
@@ -59,5 +59,14 @@ class SiteController extends Controller
     public function actionIndex()
     {
        return $this->render('index');
+    }
+
+    /**
+     * Render about
+     * @return string
+     */
+    public function actionAbout()
+    {
+        return $this->render('about');
     }
 }
