@@ -10,4 +10,7 @@
 
 return [
     "Fill in the field" => "Заполните поле",
+    "The field must contain no more than {number} characters" => "Поле должно содержать не больше {number} символов",
+    "The field must contain more than {number} characters" => "Поле должно содержать больше {number} символов",
+    "This email is already registered" => "Этот email уже зарегистрирован",
 ];

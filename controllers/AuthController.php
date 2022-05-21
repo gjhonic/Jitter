@@ -6,13 +6,61 @@ use app\models\forms\LoginForm;
 use app\models\forms\RegisterForm;
 use app\models\User;
 use yii\db\Exception;
+use yii\filters\AccessControl;
+use yii\filters\VerbFilter;
 use yii\helpers\Url;
 
 class AuthController extends \yii\web\Controller
 {
-    public $layout = 'main';
+    public $layout = 'frontend';
 
-    public function actionLogin()
+    public function behaviors(): array
+    {
+        return [
+            'verbs' => [
+                'class' => VerbFilter::className(),
+                'actions' => [
+                    'delete' => ['POST'],
+                ],
+            ],
+            'access' => [
+                'class' => AccessControl::className(),
+                'denyCallback' => function () {
+                    $this->redirect(Url::to(['/signin']));
+                },
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'actions' => ['signin', 'signup'],
+                        'roles' => ['?'],
+                    ],
+                    [
+                        'allow' => true,
+                        'actions' => ['signout'],
+                        'roles' => ['@'],
+                    ],
+                ],
+            ],
+        ];
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function actions()
+    {
+        return [
+            'error' => [
+                'class' => 'yii\web\ErrorAction',
+            ],
+            'captcha' => [
+                'class' => 'yii\captcha\CaptchaAction',
+                'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
+            ],
+        ];
+    }
+
+    public function actionSignin()
     {
         if(\Yii::$app->user->isGuest) {
             $model = new LoginForm();
@@ -35,7 +83,7 @@ class AuthController extends \yii\web\Controller
         }
     }
 
-    public function actionRegister()
+    public function actionSignup()
     {
         $model = new RegisterForm();
         $data = \Yii::$app->request->post();
@@ -49,7 +97,7 @@ class AuthController extends \yii\web\Controller
         }
     }
 
-    public function actionLogout()
+    public function actionSignout()
     {
         if(\Yii::$app->user->identity) {
             \Yii::$app->user->logout();

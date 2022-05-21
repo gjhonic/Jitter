@@ -5,8 +5,6 @@ namespace app\models\forms;
 use app\models\User;
 use Yii;
 use yii\base\Model;
-use yii\base\Security;
-use yii\behaviors\TimestampBehavior;
 
 class RegisterForm extends Model
 {
@@ -16,32 +14,32 @@ class RegisterForm extends Model
     public $password_confirm;
 
     /**
-     * {@inheritdoc}
+     * @return array
      */
-    public function rules()
+    public function rules(): array
     {
         return [
-            [['username', 'email', 'password', 'password_confirm'], 'required', 'message' => 'Заполните поле'],
-            [['username', 'email', 'password', 'password_confirm'], 'string', 'max' => 50, 'tooLong' => 'Поле должно содержать не больше 50 символов'],
-            [['password', 'password_confirm'], 'string', 'min' => 6, 'tooShort' => 'Поле должно содержать больше 6 символов'],
-            [['email'], 'unique', 'targetClass' => User::className(), 'message' => 'Этот email уже зарегистрирован'],
+            [['username', 'email', 'password', 'password_confirm'], 'required', 'message' => Yii::t('app/note', 'Fill in the field')],
+            [['username', 'email', 'password', 'password_confirm'], 'string', 'max' => 50, 'tooLong' => Yii::t('app/note', 'The field must contain no more than {number} characters', ['number' => 50])],
+            [['password', 'password_confirm'], 'string', 'min' => 6, 'tooShort' => Yii::t('app/note', 'The field must contain more than {number} characters', ['number' => 6])],
+            [['email'], 'unique', 'targetClass' => User::className(), 'message' => Yii::t('app/note', 'This email is already registered')],
         ];
     }
 
     /**
-     * {@inheritdoc}
+     * @return array
      */
-    public function attributeLabels()
+    public function attributeLabels(): array
     {
         return [
-            'username' => 'Username',
-            'email' => 'Email',
-            'password' => 'Password',
-            'password_confirm' => 'Password confirm',
+            'username' => Yii::t('app', 'Username'),
+            'email' => Yii::t('app', 'Email'),
+            'password' => Yii::t('app', 'Password'),
+            'password_confirm' => Yii::t('app', 'Password confirm'),
         ];
     }
 
-    public function register($data)
+    public function register()
     {
         $user = new User();
         $user->role = User::ROLE_USER;
