@@ -1,5 +1,10 @@
 <?php
 
+if (file_exists(__DIR__ . '/offline.php')) {
+    include __DIR__ . '/offline.php';
+    die(0);
+}
+
 // comment out the following two lines when deployed to production
 defined('YII_DEBUG') or define('YII_DEBUG', true);
 defined('YII_ENV') or define('YII_ENV', 'dev');
