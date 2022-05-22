@@ -127,7 +127,7 @@ class FrontendMenuWidget extends Widget
         }
 
 
-        return $this->render('fronted/menu', [
+        return $this->render('frontend\menu', [
             'navs' => $navs,
         ]);
     }

@@ -17,6 +17,11 @@ return [
     "Sign in" => "Войти",
     "Sign up" => "Зарегистрироваться",
 
+    //Языки
+    "Languages" => "Языки",
+    "English" => "English",
+    "Russion" => "Russion",
+
     //Про пользователя
     "Username" => "Имя пользователя",
     "Password" => "Пароль",

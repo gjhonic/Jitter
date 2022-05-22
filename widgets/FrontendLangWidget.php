@@ -5,7 +5,7 @@ namespace app\widgets;
 use yii\base\Widget;
 
 /**
- * Виджет для футера во фронте
+ * Виджет для смены языков во фронте
  */
 class FrontendLangWidget extends Widget
 {
@@ -14,6 +14,6 @@ class FrontendLangWidget extends Widget
      */
     public function run()
     {
-        return $this->render('fronted/lang');
+        return $this->render('frontend/lang');
     }
 }

@@ -1,5 +1,5 @@
 <?php
-use yii\helpers\Url;
+use app\widgets\FrontendLangWidget;
 
 ?>
 <footer class="pt-4 my-md-5 pt-md-5 border-top">
@@ -28,13 +28,7 @@ use yii\helpers\Url;
                 <li><a class="text-muted" href="#">Final resource</a></li>
             </ul>
         </div>
-        <div class="col-6 col-md">
-            <h5><?=Yii::t('app', 'Languages')?></h5>
-            <ul class="list-unstyled text-small">
-                <li><a class="text-muted" href="<?=Url::to('lang/change&lang=en')?>">English</a></li>
-                <li><a class="text-muted" href="<?=Url::to('lang/change&lang=ru')?>">Русский</a></li>
-                <li><a class="text-muted" href="<?=Url::to('lang/change&lang=kz')?>">Казақ</a></li>
-            </ul>
-        </div>
+        
+        <?=FrontendLangWidget::widget();?>
     </div>
 </footer>

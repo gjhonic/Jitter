@@ -14,6 +14,6 @@ class FrontendFooterWidget extends Widget
      */
     public function run()
     {
-        return $this->render('fronted/footer');
+        return $this->render('frontend/footer');
     }
 }
