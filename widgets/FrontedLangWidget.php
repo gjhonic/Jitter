@@ -7,13 +7,13 @@ use yii\base\Widget;
 /**
  * Виджет для футера во фронте
  */
-class FrontendFooterWidget extends Widget
+class FrontendLangWidget extends Widget
 {
     /**
      * {@inheritdoc}
      */
     public function run()
     {
-        return $this->render('fronted/footer');
+        return $this->render('fronted/lang');
     }
 }

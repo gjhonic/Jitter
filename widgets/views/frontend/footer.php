@@ -1,5 +1,5 @@
 <?php
-
+use yii\helpers\Url;
 
 ?>
 <footer class="pt-4 my-md-5 pt-md-5 border-top">
@@ -31,9 +31,9 @@
         <div class="col-6 col-md">
             <h5><?=Yii::t('app', 'Languages')?></h5>
             <ul class="list-unstyled text-small">
-                <li><a class="text-muted" href="#">English</a></li>
-                <li><a class="text-muted" href="#">Русский</a></li>
-                <li><a class="text-muted" href="#">Казақ</a></li>
+                <li><a class="text-muted" href="<?=Url::to('lang/change&lang=en')?>">English</a></li>
+                <li><a class="text-muted" href="<?=Url::to('lang/change&lang=ru')?>">Русский</a></li>
+                <li><a class="text-muted" href="<?=Url::to('lang/change&lang=kz')?>">Казақ</a></li>
             </ul>
         </div>
     </div>

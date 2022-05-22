@@ -64,7 +64,7 @@ class LangController extends Controller
        $langsSupport = Lang::getLangs();
        if (in_array($lang, $langsSupport)) {
            Yii::$app->lang = $lang;
-
        }
+       return $this-
     }
 }
