@@ -10,17 +10,23 @@
 
 return [
     //General
-    "Home" => "Главная",
-    "About" => "О нас",
     "Created at" => "Добавлено",
     "Updated at" => "Изменено",
     "Sign in" => "Войти",
     "Sign up" => "Зарегистрироваться",
 
+    //Страницы
+    "Information" => "Информация",
+    "Confidentiality" => "Конфиденциальность",
+    "Home" => "Главная",
+    "About" => "О нас",
+    "How to play" => "Как играть",
+
     //Языки
     "Languages" => "Языки",
     "English" => "English",
-    "Russion" => "Russion",
+    "Russian" => "Russian",
+    "Kazakh" => "Kazakh",
 
     //Про пользователя
     "Username" => "Имя пользователя",

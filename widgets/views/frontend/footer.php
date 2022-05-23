@@ -20,12 +20,12 @@ use app\widgets\FrontendLangWidget;
             </ul>
         </div>
         <div class="col-6 col-md">
-            <h5>Resources</h5>
+            <h5><?=Yii::t('app', 'Information')?></h5>
             <ul class="list-unstyled text-small">
-                <li><a class="text-muted" href="#">Resource</a></li>
-                <li><a class="text-muted" href="#">Resource name</a></li>
-                <li><a class="text-muted" href="#">Another resource</a></li>
-                <li><a class="text-muted" href="#">Final resource</a></li>
+                <li><a class="text-muted" href="#"><?=Yii::t('app', 'Home')?></a></li>
+                <li><a class="text-muted" href="#"><?=Yii::t('app', 'How to play')?></a></li>
+                <li><a class="text-muted" href="#"><?=Yii::t('app', 'About')?></a></li>
+                <li><a class="text-muted" href="#"><?=Yii::t('app', 'Confidentiality')?></a></li>
             </ul>
         </div>
         

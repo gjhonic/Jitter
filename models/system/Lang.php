@@ -21,10 +21,10 @@ class Lang
                 'title' => Yii::t('app', 'English')
             ],
             self::LANG_RU => [
-                'title' => Yii::t('app', 'Russion')
+                'title' => Yii::t('app', 'Russian')
             ],
             self::LANG_KZ => [
-                'title' => Yii::t('app', 'Kazak')
+                'title' => Yii::t('app', 'Kazakh')
             ],
         ];
     }
