@@ -2,4 +2,4 @@
 
 ?>
 
-<h1> About </h1>
+<h1><?=Yii::t('app', 'About')?></h1>

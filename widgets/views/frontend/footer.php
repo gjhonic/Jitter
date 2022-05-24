@@ -1,5 +1,7 @@
 <?php
-use app\widgets\FrontendLangWidget;
+
+use app\widgets\FrontendFooterInfoWidget;
+use app\widgets\FrontendFooterLangWidget;
 
 ?>
 <footer class="pt-4 my-md-5 pt-md-5 border-top">
@@ -19,16 +21,9 @@ use app\widgets\FrontendLangWidget;
                 <li><a class="text-muted" href="#">Last time</a></li>
             </ul>
         </div>
-        <div class="col-6 col-md">
-            <h5><?=Yii::t('app', 'Information')?></h5>
-            <ul class="list-unstyled text-small">
-                <li><a class="text-muted" href="#"><?=Yii::t('app', 'Home')?></a></li>
-                <li><a class="text-muted" href="#"><?=Yii::t('app', 'How to play')?></a></li>
-                <li><a class="text-muted" href="#"><?=Yii::t('app', 'About')?></a></li>
-                <li><a class="text-muted" href="#"><?=Yii::t('app', 'Confidentiality')?></a></li>
-            </ul>
-        </div>
-        
-        <?=FrontendLangWidget::widget();?>
+
+        <?=FrontendFooterInfoWidget::widget();?>
+
+        <?=FrontendFooterLangWidget::widget();?>
     </div>
 </footer>

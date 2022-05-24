@@ -26,7 +26,7 @@ class SiteController extends Controller
                 'rules' => [
                     [
                         'allow' => true,
-                        'actions' => ['index', 'about'],
+                        'actions' => ['index', 'about', 'guide', 'confidentiality'],
                         'roles' => ['?', '@'],
                     ],
                 ],
@@ -68,5 +68,23 @@ class SiteController extends Controller
     public function actionAbout()
     {
         return $this->render('about');
+    }
+
+    /**
+     * Render about
+     * @return string
+     */
+    public function actionGuide()
+    {
+        return $this->render('guide');
+    }
+
+    /**
+     * Render about
+     * @return string
+     */
+    public function actionConfidentiality()
+    {
+        return $this->render('confidentiality');
     }
 }

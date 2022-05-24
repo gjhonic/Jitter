@@ -1,12 +1,14 @@
 <?php
 return [
 
-    'signin' => 'auth/signin',
-    'signup' => 'auth/signup',
+    //Фронтенд страницы
+    'signin'  => 'auth/signin',
+    'signup'  => 'auth/signup',
     'signout' => 'auth/signout',
-
+    'index'   => 'site/index',
+    'guide'   => 'site/guide',
+    'confidentiality' => 'site/confidentiality',
     'about' => 'site/about',
-    'index' => 'site/index',
 
     //Роутинг на модуль `admin`
     'admin' => 'admin/page/index',
