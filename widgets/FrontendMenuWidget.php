@@ -68,7 +68,7 @@ class FrontendMenuWidget extends Widget
                     ],
                     [
                         'title' => Yii::t('app', 'My games'),
-                        'url' => Url::to('games/index'),
+                        'url' => Url::to('сonstructor'),
                     ],
                 ],
                 'auth' => [
