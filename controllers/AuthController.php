@@ -2,12 +2,11 @@
 
 namespace app\controllers;
 
-use app\models\forms\LoginForm;
-use app\models\forms\RegisterForm;
+use app\models\forms\SigninForm;
+use app\models\forms\SignupForm;
 use app\models\User;
-use yii\db\Exception;
+use Yii;
 use yii\filters\AccessControl;
-use yii\filters\VerbFilter;
 use yii\helpers\Url;
 
 class AuthController extends \yii\web\Controller
@@ -15,12 +14,6 @@ class AuthController extends \yii\web\Controller
     public function behaviors(): array
     {
         return [
-            'verbs' => [
-                'class' => VerbFilter::className(),
-                'actions' => [
-                    'delete' => ['POST'],
-                ],
-            ],
             'access' => [
                 'class' => AccessControl::className(),
                 'denyCallback' => function () {
@@ -62,36 +55,32 @@ class AuthController extends \yii\web\Controller
 
     public function actionSignin()
     {
-        if(\Yii::$app->user->isGuest) {
-            $model = new LoginForm();
-            $data = \Yii::$app->request->post();
-            if($model->load($data) && $model->validate()) {
-                $identity = User::findOne(['email' => $data['LoginForm']['email']]);
-                if($identity && \Yii::$app->getSecurity()->validatePassword($data['LoginForm']['password'], $identity['password'])) {
-                    \Yii::$app->user->login($identity);
-                    return $this->redirect('/');
-                } else {
-                    throw new Exception('Неверный логин или пароль.');
-                }
-            }else{
-                return $this->render('login', [
-                    'model' => $model,
-                ]);
+        $model = new SigninForm();
+        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+            $user = User::findOne(['email' => $model->email]);
+            if ($user && Yii::$app->getSecurity()->validatePassword($model->password, $user->password)) {
+                Yii::$app->user->login($user);
+                return $this->redirect('/');
+            } else {
+                Yii::$app->session->setFlash('danger', Yii::t('app/note', ''));
             }
         }else{
-            return $this->redirect('/');
+            return $this->render('signin', [
+                'model' => $model,
+            ]);
         }
+        
     }
 
     public function actionSignup()
     {
-        $model = new RegisterForm();
-        $data = \Yii::$app->request->post();
+        $model = new SigninForm();
+        $data = Yii::$app->request->post();
         if($model->load($data) && $model->validate()) {
             $model->register($data['RegisterForm']);
             return $this->redirect(Url::to('login'));
         }else{
-            return $this->render('register', [
+            return $this->render('signup', [
                 'model' => $model
             ]);
         }
@@ -99,8 +88,8 @@ class AuthController extends \yii\web\Controller
 
     public function actionSignout()
     {
-        if(\Yii::$app->user->identity) {
-            \Yii::$app->user->logout();
+        if(Yii::$app->user->identity) {
+            Yii::$app->user->logout();
             return $this->redirect(Url::to('login'));
         }else{
             return $this->redirect(Url::to('login'));
