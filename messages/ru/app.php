@@ -14,6 +14,7 @@ return [
     "Updated at" => "Изменено",
     "Sign in" => "Войти",
     "Sign up" => "Зарегистрироваться",
+    "Sign out" => "Выйти",
 
     //Страницы
     "Information" => "Информация",
@@ -21,6 +22,7 @@ return [
     "Home" => "Главная",
     "About" => "О нас",
     "How to play" => "Как играть",
+    "My games" => "Мои игры",
 
     //Языки
     "Languages" => "Языки",
