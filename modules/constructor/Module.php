@@ -1,6 +1,6 @@
 <?php
 
-namespace app\modules\сonstructor;
+namespace app\modules\constructor;
 
 use Yii;
 use yii\web\ErrorHandler;
@@ -13,7 +13,7 @@ class Module extends \yii\base\Module
     /**
      * {@inheritdoc}
      */
-    public $controllerNamespace = 'app\modules\сonstructor\controllers';
+    public $controllerNamespace = 'app\modules\constructor\controllers';
 
     /**
      * {@inheritdoc}
@@ -27,7 +27,7 @@ class Module extends \yii\base\Module
             'components' => [
                 'errorHandler' => [
                     'class' => ErrorHandler::className(),
-                    'errorAction' => '/сonstructor/page/error',
+                    'errorAction' => '/constructor/page/error',
                 ]
             ],
         ]);
@@ -40,21 +40,21 @@ class Module extends \yii\base\Module
 
     public function registerTranslations()
     {
-        Yii::$app->i18n->translations['modules/сonstructor/*'] = [
+        Yii::$app->i18n->translations['modules/constructor/*'] = [
             'class' => 'yii\i18n\PhpMessageSource',
             'sourceLanguage' => 'en-US',
-            'basePath' => '@app/modules/сonstructor/messages',
+            'basePath' => '@app/modules/constructor/messages',
             'fileMap' => [
-                'modules/сonstructor/app' => 'app.php',
-                'modules/сonstructor/note' => 'note.php',
-                'modules/сonstructor/error' => 'error.php',
-                'modules/сonstructor/log' => 'log.php'
+                'modules/constructor/app' => 'app.php',
+                'modules/constructor/note' => 'note.php',
+                'modules/constructor/error' => 'error.php',
+                'modules/constructor/log' => 'log.php'
             ],
         ];
     }
 
     public static function t($category, $message, $params = [], $language = null)
     {
-        return Yii::t('modules/сonstructor/' . $category, $message, $params, $language);
+        return Yii::t('modules/constructor/' . $category, $message, $params, $language);
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace app\modules\admin\widgets;
+namespace app\modules\constructor\widgets;
 
 use Yii;
 

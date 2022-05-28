@@ -3,16 +3,16 @@
 /** @var yii\web\View $this */
 /** @var string $content */
 
-use app\modules\сonstructor\assets\ConstructorAsset;
-use app\modules\сonstructor\Module;
-use app\modules\admin\widgets\Alert;
+use app\modules\constructor\assets\ConstructorAsset;
+use app\modules\constructor\Module;
+use app\modules\constructor\widgets\Alert;
 use yii\helpers\Html;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\helpers\Url;
 use yii\widgets\Breadcrumbs;
 
-$nav = array_merge(require(__DIR__ . '/_nav/сonstructor.php'));
+$nav = array_merge(require(__DIR__ . '/_nav/constructor.php'));
 
 ConstructorAsset::register($this);
 ?>

@@ -10,9 +10,9 @@ return [
     'confidentiality' => 'site/confidentiality',
     'about' => 'site/about',
 
-    //Роутинг на модуль `сonstructor`
-    'сonstructor' => 'сonstructor/page/index',
-    'сonstructor/<controller:\w+>/<action:\w+>' => 'сonstructor/<controller>/<action>',
+    //Роутинг на модуль `constructor`
+    'constructor' => 'constructor/page/index',
+    'constructor/<controller:\w+>/<action:\w+>' => 'constructor/<controller>/<action>',
 
     //Роутинг на модуль `admin`
     'admin' => 'admin/page/index',

@@ -79,8 +79,8 @@ $config = [
         ],
     ],
     'modules' => [
-        'сonstructor' => [
-            'class' => 'app\modules\сonstructor\Module',
+        'constructor' => [
+            'class' => 'app\modules\constructor\Module',
         ],
         'game' => [
             'class' => 'app\modules\game\Module',

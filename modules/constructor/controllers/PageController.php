@@ -1,12 +1,12 @@
 <?php
 /**
  * PageController
- * Основной Контроллер модуля сonstructor
+ * Основной Контроллер модуля constructor
  * @copyright Copyright (c) 2022 Eugene Andreev
  * @author Eugene Andreev <gjhonic@gmail.com>
  *
  */
-namespace app\modules\сonstructor\controllers;
+namespace app\modules\constructor\controllers;
 
 use yii\filters\AccessControl;
 use yii\helpers\Url;
@@ -53,10 +53,10 @@ class PageController extends Controller
         ];
     }
 
-    public $layout = 'сonstructor';
+    public $layout = 'constructor';
 
     /**
-     * HomePage сonstructor
+     * HomePage constructor
      * @return string
      */
     public function actionIndex()
