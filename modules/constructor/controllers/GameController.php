@@ -3,6 +3,7 @@
 namespace app\modules\constructor\controllers;
 
 use app\models\Game;
+use Yii;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -58,16 +59,6 @@ class GameController extends Controller
     {
         $dataProvider = new ActiveDataProvider([
             'query' => Game::find(),
-            /*
-            'pagination' => [
-                'pageSize' => 50
-            ],
-            'sort' => [
-                'defaultOrder' => [
-                    'id' => SORT_DESC,
-                ]
-            ],
-            */
         ]);
 
         return $this->render('index', [
