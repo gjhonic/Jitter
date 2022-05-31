@@ -1,5 +1,6 @@
 <?php
 
+use app\models\Game;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\grid\ActionColumn;
@@ -25,18 +26,29 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
             'name',
             'title',
             'description:ntext',
             'user_id',
-            //'created_at',
-            //'updated_at',
             [
-                'class' => ActionColumn::className(),
-                'urlCreator' => function ($action, Game $model, $key, $index, $column) {
-                    return Url::toRoute([$action, 'id' => $model->id]);
-                 }
+                'label' => Yii::t('app', 'Action column'),
+                'format' => 'raw',
+                'value' => function ($model) {
+                    $html = Html::a(IcoComponent::view() . ' ' . Yii::t('app', 'Show'), Url::to(['view', 'id' => $model->id]), ['class' => 'btn btn-success btn-block']);
+
+                    if(Yii::$app->user->identity->role !== User::ROLE_MODERATOR){
+                        $html .= ' ' . Html::a(IcoComponent::edit() . ' ' .Yii::t('app', 'Edit'), Url::to(['update', 'id' => $model->id]), ['class' => 'btn btn-primary btn-block']);
+                        $html .= ' ' . Html::a(IcoComponent::delete() . ' ' . Yii::t('app', 'Delete'), Url::to(['delete', 'id' => $model->id]), [
+                                'class' => 'btn btn-danger btn-block',
+                                'data' => [
+                                    'confirm' => Yii::t('note', 'Are you sure you want to delete this item?'),
+                                    'method' => 'post',
+                                ],
+                            ]);
+                    }
+
+                    return $html;
+                }
             ],
         ],
     ]); ?>

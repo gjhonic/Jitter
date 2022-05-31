@@ -4,6 +4,7 @@ namespace app\models;
 
 use Yii;
 use app\models\User;
+use yii\behaviors\TimestampBehavior;
 
 /**
  * This is the model class for table "games".
@@ -21,31 +22,32 @@ use app\models\User;
 class Game extends \yii\db\ActiveRecord
 {
     /**
-     * {@inheritdoc}
+     * @return string
      */
-    public static function tableName()
+    public static function tableName(): string
     {
         return '{{%games}}';
     }
 
     /**
-     * {@inheritdoc}
+     * @return array
      */
-    public function rules()
+    public function rules(): array
     {
         return [
             [['name', 'title', 'user_id'], 'required'],
             [['description'], 'string'],
-            [['user_id', 'created_at', 'updated_at'], 'integer'],
+            [['user_id'], 'integer'],
+            [[ 'created_at', 'updated_at'], 'safe'],
             [['name', 'title'], 'string', 'max' => 255],
             [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['user_id' => 'id']],
         ];
     }
 
     /**
-     * {@inheritdoc}
+     * @return array
      */
-    public function attributeLabels()
+    public function attributeLabels(): array
     {
         return [
             'id' => Yii::t('app', 'ID'),
@@ -55,6 +57,16 @@ class Game extends \yii\db\ActiveRecord
             'user_id' => Yii::t('app', 'User ID'),
             'created_at' => Yii::t('app', 'Created At'),
             'updated_at' => Yii::t('app', 'Updated At'),
+        ];
+    }
+
+    /**
+     * @return array
+     */
+    public function behaviors(): array
+    {
+        return [
+            TimestampBehavior::class,
         ];
     }
 
