@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
+/* @var $model \app\models\forms\SigninForm */
 ?>
 <div class="row">
     <div class="col-md-8">
