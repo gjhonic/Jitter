@@ -1,6 +1,8 @@
 <?php
 
 use app\models\Game;
+use app\models\User;
+use appcomponents\IcoComponent;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\grid\ActionColumn;
@@ -35,17 +37,15 @@ $this->params['breadcrumbs'][] = $this->title;
                 'format' => 'raw',
                 'value' => function ($model) {
                     $html = Html::a(IcoComponent::view() . ' ' . Yii::t('app', 'Show'), Url::to(['view', 'id' => $model->id]), ['class' => 'btn btn-success btn-block']);
+                    $html .= ' ' . Html::a(IcoComponent::edit() . ' ' .Yii::t('app', 'Edit'), Url::to(['update', 'id' => $model->id]), ['class' => 'btn btn-primary btn-block']);
+                    $html .= ' ' . Html::a(IcoComponent::delete() . ' ' . Yii::t('app', 'Delete'), Url::to(['delete', 'id' => $model->id]), [
+                            'class' => 'btn btn-danger btn-block',
+                            'data' => [
+                                'confirm' => Yii::t('note', 'Are you sure you want to delete this item?'),
+                                'method' => 'post',
+                            ],
+                        ]);
 
-                    if(Yii::$app->user->identity->role !== User::ROLE_MODERATOR){
-                        $html .= ' ' . Html::a(IcoComponent::edit() . ' ' .Yii::t('app', 'Edit'), Url::to(['update', 'id' => $model->id]), ['class' => 'btn btn-primary btn-block']);
-                        $html .= ' ' . Html::a(IcoComponent::delete() . ' ' . Yii::t('app', 'Delete'), Url::to(['delete', 'id' => $model->id]), [
-                                'class' => 'btn btn-danger btn-block',
-                                'data' => [
-                                    'confirm' => Yii::t('note', 'Are you sure you want to delete this item?'),
-                                    'method' => 'post',
-                                ],
-                            ]);
-                    }
 
                     return $html;
                 }
