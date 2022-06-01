@@ -1,8 +1,8 @@
 <?php
 
+use app\components\IcoComponent;
 use app\models\Game;
 use app\models\User;
-use appcomponents\IcoComponent;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\grid\ActionColumn;
@@ -22,7 +22,6 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= Html::a(Yii::t('app', 'Create Game'), ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
-
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'columns' => [
@@ -31,7 +30,13 @@ $this->params['breadcrumbs'][] = $this->title;
             'name',
             'title',
             'description:ntext',
-            'user_id',
+            [
+                'attribute' => 'created_at',
+                'value' => function ($model) {
+                    return Yii::$app->formatter->asDatetime($model->created_at, "php:d.m.Y H:i:s");
+                }
+            ],
+
             [
                 'label' => Yii::t('app', 'Action column'),
                 'format' => 'raw',
@@ -41,7 +46,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     $html .= ' ' . Html::a(IcoComponent::delete() . ' ' . Yii::t('app', 'Delete'), Url::to(['delete', 'id' => $model->id]), [
                             'class' => 'btn btn-danger btn-block',
                             'data' => [
-                                'confirm' => Yii::t('note', 'Are you sure you want to delete this item?'),
+                                'confirm' => Yii::t('app/note', 'Are you sure you want to delete this item?'),
                                 'method' => 'post',
                             ],
                         ]);
@@ -52,6 +57,4 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
         ],
     ]); ?>
-
-
 </div>

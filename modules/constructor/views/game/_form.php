@@ -14,7 +14,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'title')->textInput(['maxlength' => true])->label(Yii::t('app', 'Title in game')) ?>
 
     <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
 

@@ -35,7 +35,7 @@ class Game extends \yii\db\ActiveRecord
     public function rules(): array
     {
         return [
-            [['name', 'title', 'user_id'], 'required'],
+            [['name', 'title'], 'required'],
             [['description'], 'string'],
             [['user_id'], 'integer'],
             [[ 'created_at', 'updated_at'], 'safe'],
@@ -54,9 +54,9 @@ class Game extends \yii\db\ActiveRecord
             'name' => Yii::t('app', 'Name'),
             'title' => Yii::t('app', 'Title'),
             'description' => Yii::t('app', 'Description'),
-            'user_id' => Yii::t('app', 'User ID'),
-            'created_at' => Yii::t('app', 'Created At'),
-            'updated_at' => Yii::t('app', 'Updated At'),
+            'user_id' => Yii::t('app', 'User id'),
+            'created_at' => Yii::t('app', 'Created at'),
+            'updated_at' => Yii::t('app', 'Updated at'),
         ];
     }
 
@@ -68,6 +68,26 @@ class Game extends \yii\db\ActiveRecord
         return [
             TimestampBehavior::class,
         ];
+    }
+
+    public function beforeSave($insert)
+    {
+        if (parent::beforeSave($insert)) {
+            if ($insert) {
+                $this->setAuthor();
+            }
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * Устанавливается создатель игры
+     */
+    public function setAuthor()
+    {
+        $this->user_id = Yii::$app->user->identity->id;
     }
 
     /**

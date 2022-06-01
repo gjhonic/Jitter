@@ -1,6 +1,6 @@
 <?php
 
-namespace appcomponents;
+namespace app\components;
 
 /**
  * IcoComponent
