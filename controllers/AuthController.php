@@ -59,7 +59,7 @@ class AuthController extends \yii\web\Controller
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             $user = User::findOne(['email' => $model->email]);
             if ($user && Yii::$app->getSecurity()->validatePassword($model->password, $user->password)) {
-                Yii::$app->user->login($user);
+                Yii::$app->user->login($user, $model->rememberMe ? 3600*24*30 : 0);
                 return $this->redirect('/');
             } else {
                 Yii::$app->session->setFlash('danger', Yii::t('app/note', ''));

@@ -13,6 +13,10 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'password')->passwordInput(); ?>
 
+    <?= $form->field($model, 'rememberMe')->checkbox([
+        'template' => "<div class=\"col-lg-offset-1 col-lg-3\">{input} {label}</div>\n<div class=\"col-lg-8\">{error}</div>",
+    ]) ?>
+
     <?= Html::submitButton(Yii::t('app', 'Sign in'), ['class' => 'btn btn-success']) ?>
 
     <?php ActiveForm::end(); ?>

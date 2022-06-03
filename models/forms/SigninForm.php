@@ -9,6 +9,7 @@ class SigninForm extends Model
 {
     public $email;
     public $password;
+    public $rememberMe = true;
 
     /**
      * @return array
@@ -17,6 +18,7 @@ class SigninForm extends Model
     {
         return [
             [['email', 'password'], 'required', 'message' => Yii::t('app/note', 'Fill in the field')],
+            ['rememberMe', 'boolean'],
         ];
     }
 
@@ -28,6 +30,7 @@ class SigninForm extends Model
         return [
             'email' => Yii::t('app', 'Email'),
             'password' => Yii::t('app', 'Password'),
+            'rememberMe' => Yii::t('app', 'Remember me'),
         ];
     }
 }
