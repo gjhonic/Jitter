@@ -2,34 +2,38 @@
 
 namespace app\modules\constructor\controllers;
 
-use app\models\Game;
+use app\modules\constructor\models\Game;
+use app\models\User;
 use Yii;
+use yii\helpers\Url;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
-use yii\filters\VerbFilter;
+use yii\filters\AccessControl;
 
 /**
  * GameController implements the CRUD actions for Game model.
  */
 class GameController extends Controller
 {
-    /**
-     * @inheritDoc
-     */
-    public function behaviors()
+
+    public function behaviors(): array
     {
-        return array_merge(
-            parent::behaviors(),
-            [
-                'verbs' => [
-                    'class' => VerbFilter::className(),
-                    'actions' => [
-                        'delete' => ['POST'],
+        return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'denyCallback' => function () {
+                    $this->redirect(Url::to(['/signin']));
+                },
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'actions' => ['index', 'view', 'update', 'delete'],
+                        'roles' => [User::ROLE_USER],
                     ],
                 ],
-            ]
-        );
+            ],
+        ];
     }
 
     /**
