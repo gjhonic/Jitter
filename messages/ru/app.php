@@ -27,6 +27,8 @@ return [
     "Editing" => "Редактирование",
     "Action column" => "Действия",
     "Remember me" => "Запомнить меня",
+    "Update" => "Редактировать",
+    "Delete" => "Удалить",
 
     //Страницы
     "Information" => "Информация",

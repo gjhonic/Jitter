@@ -14,5 +14,6 @@ return [
 
     //Про игры
     "Create game" => "Создать игру",
+    "Update game: {name}" => "Редактировние игры: {name}",
     
 ];

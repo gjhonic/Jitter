@@ -15,4 +15,6 @@ return [
     "This email is already registered" => "Этот email уже зарегистрирован",
 
     "Wrong login or password" => "Не верный логин или пароль",
+
+    "Are you sure you want to delete this game?" => "Вы действительно хотите удалить эту игру?",
 ];

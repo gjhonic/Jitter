@@ -6,7 +6,7 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model app\models\Game */
 
-$this->title = $model->name;
+$this->title = Yii::t('app', 'Game') . ": " . $model->name;
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Games'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
@@ -20,7 +20,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= Html::a(Yii::t('app', 'Delete'), ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
-                'confirm' => Yii::t('app', 'Are you sure you want to delete this item?'),
+                'confirm' => Yii::t('app/note', 'Are you sure you want to delete this game?'),
                 'method' => 'post',
             ],
         ]) ?>
@@ -33,9 +33,18 @@ $this->params['breadcrumbs'][] = $this->title;
             'name',
             'title',
             'description:ntext',
-            'user_id',
-            'created_at',
-            'updated_at',
+            [
+                'attribute' => 'created_at',
+                'value' => function ($model) {
+                    return Yii::$app->formatter->asDatetime($model->created_at, "php:d.m.Y H:i:s");
+                }
+            ],
+            [
+                'attribute' => 'updated_at',
+                'value' => function ($model) {
+                    return Yii::$app->formatter->asDatetime($model->updated_at, "php:d.m.Y H:i:s");
+                }
+            ],
         ],
     ]) ?>
 
