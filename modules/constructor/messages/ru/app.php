@@ -11,4 +11,8 @@
 return [
     "Constructor panel" => "Мастерская игр",
     "Main" => "Главная",
+
+    //Про игры
+    "Create game" => "Создать игру",
+    
 ];

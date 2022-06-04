@@ -1,11 +1,9 @@
 <?php
 
 use app\components\IcoComponent;
-use app\models\Game;
-use app\models\User;
 use yii\helpers\Html;
 use yii\helpers\Url;
-use yii\grid\ActionColumn;
+use app\modules\constructor\Module;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
@@ -19,7 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a(Yii::t('app', 'Create Game'), ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a(Module::t('app', 'Create game'), ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([

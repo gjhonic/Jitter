@@ -12,6 +12,7 @@ return [
     //General
     "Sign in" => "Войти",
     "Sign up" => "Зарегистрироваться",
+    "Sign out" => "Выйти",
     "Name" => "Название",
     "Created at" => "Добавлен",
     "Updated at" => "Изменен",
@@ -33,6 +34,7 @@ return [
     "Home" => "Главная",
     "About" => "О нас",
     "How to play" => "Как играть",
+    "My games" => "Мои игры",
 
     //Языки
     "Languages" => "Языки",
