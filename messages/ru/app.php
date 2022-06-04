@@ -33,6 +33,7 @@ return [
     //Страницы
     "Information" => "Информация",
     "Confidentiality" => "Конфиденциальность",
+    "Welcome" => "Добро пожаловать",
     "Home" => "Главная",
     "About" => "О нас",
     "How to play" => "Как играть",
