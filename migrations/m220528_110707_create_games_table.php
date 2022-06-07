@@ -44,7 +44,7 @@ class m220528_110707_create_games_table extends Migration
             '{{%games}}'
         );
 
-        $this->dropIndex('idx-game-id', '{{%games}}');
+        $this->dropIndex('idx-games-id', '{{%games}}');
 
         $this->dropTable('{{%games}}');
     }
