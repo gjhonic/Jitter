@@ -38,7 +38,7 @@ class Game extends \yii\db\ActiveRecord
             [['name', 'title'], 'required'],
             [['description'], 'string'],
             [['user_id'], 'integer'],
-            [[ 'created_at', 'updated_at'], 'safe'],
+            [['created_at', 'updated_at'], 'safe'],
             [['name', 'title'], 'string', 'max' => 255],
             [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['user_id' => 'id']],
         ];
