@@ -18,23 +18,23 @@ use yii\behaviors\TimestampBehavior;
  * @property int|null $created_at
  * @property int|null $updated_at
  *
- * @property Games $game
- * @property Users $user
+ * @property Game $game
+ * @property User $user
  */
 class Stage extends \yii\db\ActiveRecord
 {
     /**
-     * {@inheritdoc}
+     * @return string
      */
-    public static function tableName()
+    public static function tableName(): string
     {
-        return 'stages';
+        return '{{%stages}}';
     }
 
     /**
-     * {@inheritdoc}
+     * @return array
      */
-    public function rules()
+    public function rules(): array
     {
         return [
             [['name', 'title', 'user_id', 'number', 'game_id'], 'required'],
@@ -59,12 +59,12 @@ class Stage extends \yii\db\ActiveRecord
     }
 
     /**
-     * {@inheritdoc}
+     * @return array
      */
-    public function attributeLabels()
+    public function attributeLabels(): array
     {
         return [
-            'id' => Yii::t('app', 'ID'),
+            'id' => Yii::t('app', 'Id'),
             'name' => Yii::t('app', 'Name'),
             'title' => Yii::t('app', 'Title'),
             'description' => Yii::t('app', 'Description'),
